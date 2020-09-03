@@ -32,4 +32,12 @@ public class BlankQuizApplicationService {
 
         blankQuizRepository.save(blankQuiz);
     }
+
+    public void deleteBlankQuiz(String blankQuizId) {
+        BlankQuiz blankQuiz = blankQuizRepository.find(new BlankQuizId(blankQuizId));
+
+        blankQuiz.delete();
+
+        blankQuizRepository.save(blankQuiz);
+    }
 }

@@ -15,7 +15,7 @@ public class MemoryBlankQuizRepository implements BlankQuizRepository {
     @Override
     public BlankQuiz find(BlankQuizId blankQuizId) {
         blankQuizs.stream()
-                .filter(blankQuiz -> blankQuiz.getBlankQuizId().equals(blankQuizId))
+                .filter(blankQuiz -> blankQuiz.getBlankQuizId().equals(blankQuizId) && !blankQuiz.isDeleted())
                 .findFirst()
                 .orElseThrow(NullPointerException::new);
         return null;

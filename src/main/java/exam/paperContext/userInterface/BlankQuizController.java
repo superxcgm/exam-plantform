@@ -31,4 +31,10 @@ public class BlankQuizController {
     void revise(@PathVariable String blankQuizId, @RequestBody CreateBlankQuizCommand command) {
         blankQuizApplicationService.reviseBlankQuiz(blankQuizId, command);
     }
+
+    @DeleteMapping("/blank-quizs/{blankQuizId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void delete(@PathVariable String blankQuizId) {
+        blankQuizApplicationService.deleteBlankQuiz(blankQuizId);
+    }
 }
