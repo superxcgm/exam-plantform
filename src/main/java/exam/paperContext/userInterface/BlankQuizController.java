@@ -2,6 +2,7 @@ package exam.paperContext.userInterface;
 
 import exam.paperContext.application.BlankQuizApplicationService;
 import exam.paperContext.application.CreateBlankQuizCommand;
+import exam.paperContext.application.ReviseBlankQuizCommand;
 import exam.paperContext.domain.model.blankQuiz.BlankQuizId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,7 @@ public class BlankQuizController {
 
     @PutMapping("/blank-quizs/{blankQuizId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void revise(@PathVariable String blankQuizId, @RequestBody CreateBlankQuizCommand command) {
+    void revise(@PathVariable String blankQuizId, @RequestBody ReviseBlankQuizCommand command) {
         blankQuizApplicationService.reviseBlankQuiz(blankQuizId, command);
     }
 

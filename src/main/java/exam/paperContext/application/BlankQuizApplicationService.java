@@ -25,7 +25,7 @@ public class BlankQuizApplicationService {
         return blankQuizId;
     }
 
-    public void reviseBlankQuiz(String blankQuizId, CreateBlankQuizCommand command) {
+    public void reviseBlankQuiz(String blankQuizId, ReviseBlankQuizCommand command) {
         BlankQuiz blankQuiz = blankQuizRepository.find(new BlankQuizId(blankQuizId));
 
         blankQuiz.revise(command.getContent(), command.getReferenceAnswer(), command.getScore());
