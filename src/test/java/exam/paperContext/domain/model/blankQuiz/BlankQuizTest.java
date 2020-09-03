@@ -13,7 +13,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class BlankQuizTest {
     @Test
     void should_create_blank_quiz() {
-
         BlankQuizId blankQuizId = new BlankQuizId("blankQuizId-a4c68d5d-6c18-4707-b8c2-1fd18846ebf1");
         final String teacherId = "teacher-6b35fdd8-31de-4af4-9420-3331058260c5";
         String content = "1 + 1 = ?";
@@ -44,5 +43,24 @@ public class BlankQuizTest {
         Assertions.assertThrows(IllegalScoreException.class, () -> {
             BlankQuiz.create(blankQuizId, teacherId, content, referenceAnswer, score);
         });
+    }
+
+    @Test
+    void should_revise_blank_quiz() {
+        BlankQuizId blankQuizId = new BlankQuizId("blankQuizId-a4c68d5d-6c18-4707-b8c2-1fd18846ebf1");
+        final String teacherId = "teacher-6b35fdd8-31de-4af4-9420-3331058260c5";
+        String content = "1 + 1 = ?";
+        String referenceAnswer = "2";
+        int score = 10;
+        String newContent = "new content";
+        String newReferenceAnswer = "3";
+        int newScore = 6;
+        BlankQuiz blankQuiz = BlankQuiz.create(blankQuizId, teacherId, content, referenceAnswer, score);
+
+        blankQuiz.revise(newContent, newReferenceAnswer, newScore);
+
+        assertThat(blankQuiz.getContent(), is(newContent));
+        assertThat(blankQuiz.getReferenceAnswer(), is(newReferenceAnswer));
+        assertThat(blankQuiz.getScore(), is(newScore));
     }
 }
