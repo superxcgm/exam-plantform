@@ -25,4 +25,10 @@ public class BlankQuizController {
         return BlankQuizDTO.from(blankQuizId);
     }
 
+
+    @PutMapping("/blank-quizs/{blankQuizId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void revise(@PathVariable String blankQuizId, @RequestBody CreateBlankQuizCommand command) {
+        blankQuizApplicationService.reviseBlankQuiz(blankQuizId, command);
+    }
 }
